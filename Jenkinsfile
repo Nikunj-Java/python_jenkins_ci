@@ -6,7 +6,7 @@ pipeline {
         stage('Clone Repository') {
             steps {
                 git branch: 'main',
-                url: 'https://github.com/Nikunj-Java/Python_ci_2026.git'
+                url: 'https://github.com/Nikunj-Java/python_jenkins_ci.git'
             }
         }
 
