@@ -48,8 +48,8 @@ pipeline {
     post {
         success {
             echo 'Calculator CI Pipeline Successful!'
-            emailext{
-                subject:"SUCCESS: Jenkins Build #${BUILD_NUMBER}",
+            emailext (
+                subject: "SUCCESS: Jenkins Build #${BUILD_NUMBER}",
                 body: """
                 Build Successful!
 
@@ -60,26 +60,24 @@ pipeline {
                 ${BUILD_URL}
                 """,
                 to: "${EMAIL_TO}"
-
-            }
+            )
         }
 
         failure {
             echo 'Pipeline Failed!'
-            emailext{
-                subject:"FAILED: Jenkins Build #${BUILD_NUMBER}",
+            emailext (
+                subject: "SUCCESS: Jenkins Build #${BUILD_NUMBER}",
                 body: """
-                Build Failed!
+                Build Successful!
 
                 Project: ${JOB_NAME}
                 Build Number: ${BUILD_NUMBER}
 
-                Check Console Output:
+                Build URL:
                 ${BUILD_URL}
                 """,
                 to: "${EMAIL_TO}"
-
-            }
+            )
         }
     }
 }
